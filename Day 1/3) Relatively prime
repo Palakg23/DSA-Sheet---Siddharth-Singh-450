@@ -1,0 +1,21 @@
+//Problem - https://codeforces.com/problemset/problem/1051/B
+
+//code-
+#include <iostream>
+using namespace std;
+ 
+int main() {
+	long long l,r;
+	cin>>l>>r;
+	
+	cout<<"YES"<<endl;
+	
+	for(long long i=l;i<=r-1;i=i+2) {
+	    cout<<i<<" "<<i+1<<endl;
+	}
+	
+	return 0;
+}
+
+//TC=O(logn)
+//SC=O(1)
