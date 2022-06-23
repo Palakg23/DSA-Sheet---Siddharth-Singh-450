@@ -1,0 +1,85 @@
+//Problem :- https://leetcode.com/problems/rotate-array/
+
+//code---------------------------------------------------------
+
+//Approach 1 : 
+
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n=nums.size();
+        while(k--)
+        {
+            int temp=nums[n-1];
+            for(int i=n-2;i>=0;i--)
+            {
+                nums[i+1]=nums[i];
+            }
+            nums[0]=temp;
+        }
+        
+    }
+};
+
+//Time Complexity - O(nk) 
+//Space Complexity - O(1)
+
+//Approach 2 :
+
+class Solution {
+public:
+void rotate(vector& nums, int k) {
+int n=nums.size();
+vector temp(n);
+for(int i=0;i<n;i++)
+{
+temp[(i+k)%n]=nums[i];
+}
+nums=temp;
+}
+};
+ 
+//Time complexity - O(n)
+//Space Complexity- O(n)
+
+//Approach 3: Without using stl
+
+class Solution {
+    void reverse(vector<int>&nums,int i,int j)
+    {
+        while(i<=j)
+        {
+            int temp=nums[i];
+            nums[i]=nums[j];
+            nums[j]=temp;
+            i++;
+            j--;
+        }
+    }
+public:
+void rotate(vector<int>& nums, int k) {
+int n=nums.size();
+       k=k%nums.size();
+    reverse(nums,0,n-1);
+    reverse(nums,0,k-1);
+    reverse(nums,k,n-1);
+
+}
+};
+
+//TC = O(n)
+//SC = O(1)
+
+//Approach 4 - Using stl
+class Solution {
+public:
+      rotate(vector<int>& nums, int k) {
+        k %= nums.size();
+        reverse(nums.begin(),nums.end());      // Completely Reverse the Array
+        reverse(nums.begin(),nums.begin()+k);  // Reverse from nums[0] to nums[0+k-1]
+        reverse(nums.begin()+k,nums.end());    // Reverse from nums[0+k] to nums[n-1]
+    }
+};
+
+  
+
